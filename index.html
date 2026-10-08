@@ -14,7 +14,7 @@
 
   <header class="hero">
     <div>
-      <p class="eyebrow">Academic Calculator</p>
+      <p class="eyebrow">Disclaimer: This is not the product of RI</p>
       <h1>POE CASS Calculator</h1>
       <p>
         Calculate your current CASS and determine the Summative POE
@@ -97,7 +97,7 @@
   <!-- CURRENT CASS -->
   <section class="card">
 
-    <h2>3. Current CASS</h2>
+    <h2>3. Current CASS (100%)</h2>
 
     <p class="help">
       This is the weighted mark you have already earned before
@@ -142,13 +142,13 @@
     <h2>4. What Summative Mark Do I Need?</h2>
 
     <p class="help">
-      Enter the final CASS mark you want to achieve.
+      Enter the final mark you want to achieve.
       The calculator will determine the Summative POE mark required.
     </p>
 
 
     <label for="target">
-      Desired Final CASS (%)
+      Desired Final Mark (%)
     </label>
 
     <input
@@ -159,7 +159,15 @@
       step="0.1"
       placeholder="e.g. 60"
     >
+<div class="quick-targets">
 
+      <button data-target="50">50%</button>
+      <button data-target="60">60%</button>
+      <button data-target="70">70%</button>
+      <button data-target="75">75%</button>
+      <button data-target="80">80%</button>
+
+</div>
 
     <div class="target-result">
 
@@ -168,19 +176,8 @@
       </div>
 
       <p id="message" class="help">
-        Enter your marks and desired final CASS.
+        Enter your marks and desired final mark.
       </p>
-
-    </div>
-
-
-    <div class="quick-targets">
-
-      <button data-target="50">50%</button>
-      <button data-target="60">60%</button>
-      <button data-target="70">70%</button>
-      <button data-target="75">75%</button>
-      <button data-target="80">80%</button>
 
     </div>
 
@@ -220,7 +217,7 @@
 
 
   <footer>
-    POE CASS Calculator • Educational Use
+    Developed by: Kamogelo Motau (RI | IT Lecturer)
   </footer>
 
 </main>
