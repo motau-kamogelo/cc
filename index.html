@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="POE CASS Calculator">
+  <title>POE CASS Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="container">
+
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Academic Calculator</p>
+      <h1>POE CASS Calculator</h1>
+      <p>
+        Calculate your current CASS and determine the Summative POE
+        mark required to achieve your desired final mark.
+      </p>
+    </div>
+
+    <span class="badge">100% Total</span>
+  </header>
+
+
+  <!-- ICE -->
+  <section class="card">
+
+    <h2>1. ICE Tasks</h2>
+
+    <p class="help">
+      Each attempted ICE Task earns <strong>2.5%</strong>.
+      Maximum: 4 tasks = 10%.
+    </p>
+
+    <label for="ice">Number of ICE Tasks Attempted</label>
+
+    <select id="ice">
+      <option value="0">0 tasks — 0%</option>
+      <option value="1">1 task — 2.5%</option>
+      <option value="2">2 tasks — 5%</option>
+      <option value="3">3 tasks — 7.5%</option>
+      <option value="4">4 tasks — 10%</option>
+    </select>
+
+  </section>
+
+
+  <!-- FORMATIVE -->
+  <section class="card">
+
+    <h2>2. Formative Assessments</h2>
+
+    <div class="grid">
+
+      <div>
+        <label for="f1">
+          Formative 1 — Part 1 (%)
+        </label>
+
+        <input
+          id="f1"
+          type="number"
+          min="0"
+          max="100"
+          step="0.1"
+          placeholder="e.g. 65"
+        >
+      </div>
+
+
+      <div>
+        <label for="f2">
+          Formative 2 — Part 2 (%)
+        </label>
+
+        <input
+          id="f2"
+          type="number"
+          min="0"
+          max="100"
+          step="0.1"
+          placeholder="e.g. 70"
+        >
+      </div>
+
+    </div>
+
+    <p id="error" class="error"></p>
+
+  </section>
+
+
+  <!-- CURRENT CASS -->
+  <section class="card">
+
+    <h2>3. Current CASS</h2>
+
+    <p class="help">
+      This is the weighted mark you have already earned before
+      the Summative POE.
+    </p>
+
+    <div id="current" class="big-number">
+      0.00%
+    </div>
+
+
+    <div class="breakdown">
+
+      <div>
+        <span>ICE contribution</span>
+        <strong id="iceContribution">0.00%</strong>
+      </div>
+
+      <div>
+        <span>Formative 1 contribution</span>
+        <strong id="f1Contribution">0.00%</strong>
+      </div>
+
+      <div>
+        <span>Formative 2 contribution</span>
+        <strong id="f2Contribution">0.00%</strong>
+      </div>
+
+      <div>
+        <span>Maximum possible final CASS</span>
+        <strong id="maximum">35.00%</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- REQUIRED SUMMATIVE -->
+  <section class="card">
+
+    <h2>4. What Summative Mark Do I Need?</h2>
+
+    <p class="help">
+      Enter the final CASS mark you want to achieve.
+      The calculator will determine the Summative POE mark required.
+    </p>
+
+
+    <label for="target">
+      Desired Final CASS (%)
+    </label>
+
+    <input
+      id="target"
+      type="number"
+      min="0"
+      max="100"
+      step="0.1"
+      placeholder="e.g. 60"
+    >
+
+
+    <div class="target-result">
+
+      <div id="required" class="big-number">
+        —
+      </div>
+
+      <p id="message" class="help">
+        Enter your marks and desired final CASS.
+      </p>
+
+    </div>
+
+
+    <div class="quick-targets">
+
+      <button data-target="50">50%</button>
+      <button data-target="60">60%</button>
+      <button data-target="70">70%</button>
+      <button data-target="75">75%</button>
+      <button data-target="80">80%</button>
+
+    </div>
+
+  </section>
+
+
+  <!-- WEIGHTINGS -->
+  <section class="card">
+
+    <h2>POE Weighting</h2>
+
+    <div class="breakdown">
+
+      <div>
+        <span>4 ICE Tasks</span>
+        <strong>10%</strong>
+      </div>
+
+      <div>
+        <span>Formative 1 — Part 1</span>
+        <strong>25%</strong>
+      </div>
+
+      <div>
+        <span>Formative 2 — Part 2</span>
+        <strong>30%</strong>
+      </div>
+
+      <div>
+        <span>Summative POE</span>
+        <strong>35%</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+    POE CASS Calculator • Educational Use
+  </footer>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+  </html>
