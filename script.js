@@ -1,3 +1,13 @@
+// Google Analytics 4 helper. Events deliberately contain no marks or identifiers.
+function trackEvent(eventName) {
+  if (typeof gtag === "function") {
+    gtag("event", eventName);
+  }
+}
+
+// Count a calculator visit (GA4 must be configured in index.html).
+trackEvent("calculator_loaded");
+
 const ice = document.getElementById("ice");
 const f1 = document.getElementById("f1");
 const f2 = document.getElementById("f2");
@@ -198,13 +208,23 @@ function calculateRequiredSummative(earned) {
 }
 
 
-// Update calculator whenever a value changes
+// Update the display as students enter information.
 [ice, f1, f2, target].forEach(element => {
-
   element.addEventListener("input", calculate);
-
   element.addEventListener("change", calculate);
+});
 
+// Track a completed field change, without sending any entered marks.
+[ice, f1, f2].forEach(element => {
+  element.addEventListener("change", () => {
+    trackEvent("cass_calculated");
+  });
+});
+
+target.addEventListener("change", () => {
+  if (target.value !== "" && !target.validity.rangeUnderflow && !target.validity.rangeOverflow) {
+    trackEvent("required_summative_calculated");
+  }
 });
 
 
@@ -217,6 +237,9 @@ document
 
       target.value =
         button.dataset.target;
+
+      // Record that a quick target was selected, without its percentage value.
+      trackEvent("target_selected");
 
       calculate();
 
