@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CASS Calculator for POE and non-POE modules">
+  <meta name="description" content="CASS Calculator for Rosebank InternationalStudents">
   <title>CASS Calculator</title>
   <link rel="stylesheet" href="style.css">
 
@@ -20,26 +20,26 @@
 <main class="container">
   <header class="hero">
     <div>
-      <p class="eyebrow">Independent student support tool</p>
+      <p class="eyebrow">Independent Student Support Tool</p>
       <h1>CASS Calculator</h1>
-      <p>Calculate your current weighted mark and find the Summative mark you need to reach your desired final result.</p>
+      <p>Calculate your current weighted mark and find the Summative(Exam/POE) mark you need to reach your desired final result.</p>
     </div>
     <span class="badge">Total weighting: 100%</span>
   </header>
 
   <section class="card module-choice">
     <h2>Choose your module type</h2>
-    <p class="help">Select whether your module uses the standard POE weighting or a different weighting structure.</p>
+    <p class="help">Select whether your module uses the standard POE weighting or a different weighting structure. (Check Module Outline)</p>
     <label for="moduleType">Module assessment type</label>
     <select id="moduleType">
-      <option value="poe">POE module — standard weighting</option>
-      <option value="non-poe">Non-POE module — custom weighting</option>
+      <option value="poe">POE module - standard weighting</option>
+      <option value="non-poe">Non-POE module - custom weighting</option>
     </select>
   </section>
 
   <section class="card">
     <h2>1. ICE Tasks</h2>
-    <p class="help">Each attempted ICE task earns 2.5 percentage points. Four tasks earn a maximum of 10%.</p>
+    <p class="help">Each attempted ICE task earns 2.5%. Four tasks earn a maximum of 10%.</p>
     <label for="ice">Number of ICE tasks attempted</label>
     <select id="ice">
       <option value="0">0 tasks — 0%</option>
@@ -111,7 +111,7 @@
       <button type="button" data-target="80">80%</button>
     </div>
     <div class="target-result">
-      <div id="required" class="big-number">—</div>
+      <div id="required" class="big-number">-</div>
       <p id="message" class="help" aria-live="polite">Enter your marks and desired final mark.</p>
     </div>
   </section>
@@ -128,7 +128,7 @@
   </section>
 
   <footer>
-    This independent calculator is not a product of Rosebank International. It is intended to help students plan and prepare for assessments. Always confirm your module's official assessment weightings with your lecturer.
+    This independent calculator is not a product of Rosebank International. It is intended to help students plan and prepare for assessments. Always confirm your module's official assessment weightings on the Module Outline.
     <br>Developed by: Kamogelo Motau (RI | IT Lecturer)
   </footer>
 </main>
