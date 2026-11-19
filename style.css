@@ -1,3 +1,14 @@
+.app-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.app-header img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
 :root{--page:#f4f6fb;--card:#fff;--text:#172033;--muted:#5d687b;--border:#dce2ec;--accent:#2857c5;--accent-dark:#1c4095;--danger:#b42318;--soft:#edf2ff}
 *{box-sizing:border-box}
 body{margin:0;background:var(--page);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
