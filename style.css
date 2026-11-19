@@ -9,6 +9,7 @@
     height: 60px;
     object-fit: contain;
     float: left;
+    padding-right: 5px;
 }
 :root{--page:#f4f6fb;--card:#fff;--text:#172033;--muted:#5d687b;--border:#dce2ec;--accent:#2857c5;--accent-dark:#1c4095;--danger:#b42318;--soft:#edf2ff}
 *{box-sizing:border-box}
