@@ -3,134 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CASS Calculator for Rosebank InternationalStudents">
+  <meta name="description" content="CASS Calculator for calculating current module marks and required Summative marks.">
+  <meta name="theme-color" content="#2857c5">
   <title>CASS Calculator</title>
   <link rel="stylesheet" href="style.css">
-
-  <!-- Google Analytics 4: replace the placeholder below with your GA4 Measurement ID. -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SEN1GRK5P"></script>
+  <!-- Google Analytics 4: replace the placeholder with your Measurement ID. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-REPLACE_WITH_YOUR_MEASUREMENT_ID"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { window.dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-0SEN1GRK5P');
+    gtag('config', 'G-REPLACE_WITH_YOUR_MEASUREMENT_ID');
   </script>
 </head>
 <body>
 <main class="container">
   <header class="hero">
     <div>
-      <p class="eyebrow">Independent Student Support Tool</p>
+      <p class="eyebrow">Independent student support tool v1.45</p>
       <h1>CASS Calculator</h1>
-      <p>Calculate your current weighted mark and find the Summative(Exam/POE) mark you need to reach your desired final result.</p>
+      <p>Calculate your current weighted mark and find the Summative mark you need to reach your desired final result.</p>
     </div>
     <span class="badge">Total weighting: 100%</span>
   </header>
 
-  <section class="card module-choice">
-    <h2>Choose your module type</h2>
-    <p class="help">Select whether your module uses the standard POE weighting or a different weighting structure. (Check Module Outline)</p>
-    <label for="moduleType">Module assessment type</label>
-    <select id="moduleType">
-      <option value="poe">POE module - standard weighting</option>
-      <option value="non-poe">Non-POE module - custom weighting</option>
-    </select>
-  </section>
+  <section class="wizard" aria-label="Calculator steps">
+    <div class="progress-meta"><span id="stepLabel">Screen 1 of 5</span><span id="stepTitle">ICE Tasks</span></div>
+    <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
 
-  <section class="card">
-    <h2>1. ICE Tasks</h2>
-    <p class="help">Each attempted ICE task earns 2.5%. Four tasks earn a maximum of 10%.</p>
-    <label for="ice">Number of ICE tasks attempted</label>
-    <select id="ice">
-      <option value="0">0 tasks - 0%</option>
-      <option value="1">1 task - 2.5%</option>
-      <option value="2">2 tasks - 5%</option>
-      <option value="3">3 tasks - 7.5%</option>
-      <option value="4">4 tasks - 10%</option>
-    </select>
-  </section>
+    <section class="card step-panel" data-step="0">
+      <h2>1. ICE Tasks</h2>
+      <p class="help">Each attempted ICE task earns 2.5 percentage points. Four tasks earn a maximum of 10%. Select how many tasks you attempted.</p>
+      <label for="ice">Number of ICE tasks attempted</label>
+      <select id="ice">
+        <option value="0">0 tasks — 0%</option><option value="1">1 task — 2.5%</option><option value="2">2 tasks — 5%</option><option value="3">3 tasks — 7.5%</option><option value="4">4 tasks — 10%</option>
+      </select>
+    </section>
 
-  <section class="card">
-    <h2>2. Formative assessments</h2>
-    <div class="grid">
-      <div>
-        <label for="f1">Formative 1 mark (%)</label>
-        <input id="f1" type="number" min="0" max="100" step="0.1" placeholder="e.g. 65">
+    <section class="card step-panel" data-step="1" hidden>
+      <h2>2. Set formatives weighting</h2>
+      <p class="help">ICE Tasks are worth up to 10% and the Summative is worth 35%. Set the weightings for Formative 1 and Formative 2 - check Module Outline(MO). Together, the two formative weightings must equal 55%.</p>
+      <div class="grid">
+        <div><label for="f1Weight">Formative 1 weighting (%)</label><input id="f1Weight" type="number" min="0" max="55" step="0.5" placeholder="e.g. 25"></div>
+        <div><label for="f2Weight">Formative 2 weighting (%)</label><input id="f2Weight" type="number" min="0" max="55" step="0.5" placeholder="e.g. 30"></div>
       </div>
-      <div>
-        <label for="f2">Formative 2 mark (%)</label>
-        <input id="f2" type="number" min="0" max="100" step="0.1" placeholder="e.g. 70">
+      <div class="weighting-total" id="weightingTotal" aria-live="polite">Formative weighting total: - / 55%</div>
+      <p id="weightingError" class="error" role="alert"></p>
+      <p class="help small-note">Example: Formative 1 = 25%, Formative 2 = 30%. Check Module Outline(MO) for assessment structure.</p>
+    </section>
+
+    <section class="card step-panel" data-step="2" hidden>
+      <h2>3. Formative assessments</h2>
+      <p class="help">Enter the marks you obtained for each formative assessment as percentages.</p>
+      <div class="grid">
+        <div><label for="f1">Formative 1 mark (%)</label><input id="f1" type="number" min="0" max="100" step="0.1" placeholder="e.g. 65"></div>
+        <div><label for="f2">Formative 2 mark (%)</label><input id="f2" type="number" min="0" max="100" step="0.1" placeholder="e.g. 70"></div>
       </div>
-    </div>
-    <p id="error" class="error" role="alert"></p>
-  </section>
+      <p id="markError" class="error" role="alert"></p>
+    </section>
 
-  <section id="customWeightings" class="card" hidden>
-    <h2>3. Set your non-POE weightings</h2>
-    <p class="help">ICE stays at a maximum of 10%. Enter the percentage weightings for Formative 1, Formative 2 and the Summative. These three weightings must add up to 90%.</p>
-    <div class="grid">
-      <div>
-        <label for="f1Weight">Formative 1 weighting (%)</label>
-        <input id="f1Weight" type="number" min="0" max="90" step="0.5" value="30">
+    <section class="card step-panel" data-step="3" hidden>
+      <h2>4. Desired final results</h2>
+      <p class="help">Enter the final module mark you want to achieve. You can also use one of the quick targets.</p>
+      <label for="target">Desired final mark (%)</label>
+      <input id="target" type="number" min="0" max="100" step="0.1" placeholder="e.g. 60">
+      <div class="quick-targets" aria-label="Quick target marks">
+        <button type="button" data-target="50">50%</button><button type="button" data-target="60">60%</button><button type="button" data-target="70">70%</button><button type="button" data-target="75">75%</button><button type="button" data-target="80">80%</button>
       </div>
-      <div>
-        <label for="f2Weight">Formative 2 weighting (%)</label>
-        <input id="f2Weight" type="number" min="0" max="90" step="0.5" value="25">
+      <p id="targetError" class="error" role="alert"></p>
+    </section>
+
+    <section class="card step-panel results-panel" data-step="4" hidden>
+      <h2>5. Your CASS results</h2>
+      <div class="result-block">
+        <h3>Current module mark</h3>
+        <p class="help">Your weighted mark earned before the Summative assessment.</p>
+        <div id="current" class="big-number">0.00%</div>
+        <div class="breakdown">
+          <div><span>ICE Tasks contribution</span><strong id="iceContribution">0.00%</strong></div>
+          <div><span>Formative 1 contribution</span><strong id="f1Contribution">0.00%</strong></div>
+          <div><span>Formative 2 contribution</span><strong id="f2Contribution">0.00%</strong></div>
+          <div><span>Maximum possible final mark</span><strong id="maximum">0.00%</strong></div>
+        </div>
       </div>
-      <div>
-        <label for="summativeWeight">Summative weighting (%)</label>
-        <input id="summativeWeight" type="number" min="0" max="90" step="0.5" value="35">
+
+      <div style="display: none">
+        <span id="summaryF1">25%</span>
+        <span id="summaryF2">25%</span>
       </div>
-    </div>
-    <p id="weightingError" class="error" role="alert"></p>
-    <p id="weightingTotal" class="weighting-total">Formative 1 + Formative 2 + Summative = 90%</p>
+      
+      <div class="result-block target-result">
+        <h3>Summative mark needed to achieve your desired final result</h3>
+        <div id="required" class="big-number">—</div>
+        <p id="message" class="help" aria-live="polite">Your required Summative mark will appear here.</p>
+      </div>
+      <p class="disclaimer">This calculator is a planning tool. Always confirm your module's official assessment weightings with your lecturer / Module Outline(MO).</p>
+    </section>
+    
+    <p id="navigationError" class="error" role="alert"></p>
+    <nav class="wizard-nav" aria-label="Step navigation">
+      <button type="button" id="backButton" class="secondary-button" disabled>Back</button>
+      <button type="button" id="nextButton">Next</button>
+    </nav>
   </section>
 
-  <section class="card">
-    <h2 id="currentHeading">3. Current CASS</h2>
-    <p class="help">Your current weighted mark before the Summative assessment.</p>
-    <div id="current" class="big-number">0.00%</div>
-    <div class="breakdown">
-      <div><span>ICE contribution</span><strong id="iceContribution">0.00%</strong></div>
-      <div><span>Formative 1 contribution</span><strong id="f1Contribution">0.00%</strong></div>
-      <div><span>Formative 2 contribution</span><strong id="f2Contribution">0.00%</strong></div>
-      <div><span>Maximum possible final mark</span><strong id="maximum">0.00%</strong></div>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2 id="requiredHeading">4. What Summative mark do I need?</h2>
-    <p class="help">Enter the final mark you want to achieve. The calculator will estimate the Summative mark required.</p>
-    <label for="target">Desired final mark (%)</label>
-    <input id="target" type="number" min="0" max="100" step="0.1" placeholder="e.g. 60">
-    <div class="quick-targets" aria-label="Quick target marks">
-      <button type="button" data-target="50">50%</button>
-      <button type="button" data-target="60">60%</button>
-      <button type="button" data-target="70">70%</button>
-      <button type="button" data-target="75">75%</button>
-      <button type="button" data-target="80">80%</button>
-    </div>
-    <div class="target-result">
-      <div id="required" class="big-number">-</div>
-      <p id="message" class="help" aria-live="polite">Enter your marks and desired final mark.</p>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>Assessment weighting summary</h2>
-    <div class="breakdown">
-      <div><span>ICE tasks (4 × 2.5%)</span><strong>10% maximum</strong></div>
-      <div><span>Formative 1</span><strong id="summaryF1">25%</strong></div>
-      <div><span>Formative 2</span><strong id="summaryF2">30%</strong></div>
-      <div><span>Summative</span><strong id="summarySummative">35%</strong></div>
-    </div>
-    <p id="summaryNote" class="help">Standard POE weighting is applied.</p>
-  </section>
-
-  <footer>
-    This independent calculator is not a product of Rosebank International. It is intended to help students plan and prepare for assessments. Always confirm your module's official assessment weightings on the Module Outline.
-    <br>Developed by: Kamogelo Motau (RI | IT Lecturer)
-  </footer>
+  <footer>This independent calculator is not a product of Rosebank International. It is intended to help students plan and prepare for assessments.<br>Developed by: Kamogelo Motau (RI | IT Lecturer)</footer>
 </main>
 <script src="script.js"></script>
 </body>
