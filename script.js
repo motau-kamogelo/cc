@@ -70,7 +70,7 @@ function validateStep(step) {
 function showStep(step) {
   currentStep = Math.max(0, Math.min(step, panels.length - 1));
   panels.forEach((panel, index) => { panel.hidden = index !== currentStep; });
-  stepLabel.textContent = `Screen ${currentStep + 1} of ${panels.length}`;
+  stepLabel.textContent = `Step ${currentStep + 1} of ${panels.length}`;
   stepTitle.textContent = stepTitles[currentStep];
   progressBar.style.width = `${((currentStep + 1) / panels.length) * 100}%`;
   backButton.disabled = currentStep === 0;
