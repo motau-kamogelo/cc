@@ -20,7 +20,7 @@
 <main class="container">
   <header class="hero">
     <div>
-      <p class="eyebrow">Independent student support tool v1.4</p>
+      <p class="eyebrow">Independent student support tool v1.41</p>
       <h1>CASS Calculator</h1>
       <p>Calculate your current weighted mark and find the Summative mark you need to reach your desired final result.</p>
     </div>
@@ -76,22 +76,23 @@
     <section class="card step-panel results-panel" data-step="4" hidden>
       <h2>5. Your CASS results</h2>
       <div class="result-block">
-        <h3>Current module mark</h3>
+        <h3>Current module mark (/100)</h3>
         <p class="help">Your weighted mark earned before the Summative assessment.</p>
         <div id="current" class="big-number">0.00%</div>
         <div class="breakdown">
-          <div><span>ICE Tasks contribution</span><strong id="iceContribution">0.00%</strong><span>/10%</span></div>
-          <div><span>Formative 1 contribution</span><strong id="f1Contribution">0.00%</strong><span>/</span><span id="summaryF1">25%</span></div>
-          <div><span>Formative 2 contribution</span><strong id="f2Contribution">0.00%</strong><span>/</span><span id="summaryF2">25%</span></div>
-          <div><span>Maximum possible final mark</span><strong id="maximum">0.00%</strong><span>/100%</span></div>
+          <div><span>ICE Tasks contribution</span><strong id="iceContribution">0.00%</strong></div>
+          <div><span>Formative 1 contribution</span><strong id="f1Contribution">0.00%</strong></div>
+          <div><span>Formative 2 contribution</span><strong id="f2Contribution">0.00%</strong></div>
+          <div><span>Maximum possible final mark</span><strong id="maximum">0.00%</strong></div>
         </div>
       </div>
+      
       <div class="result-block target-result">
         <h3>Summative mark needed to achieve your desired final result</h3>
         <div id="required" class="big-number">—</div>
         <p id="message" class="help" aria-live="polite">Your required Summative mark will appear here.</p>
       </div>
-      <p class="disclaimer">This calculator is a planning tool. Always confirm your module's official assessment weightings with your lecturer.</p>
+      <p class="disclaimer">This calculator is a planning tool. Always confirm your module's official assessment weightings with your lecturer or check the Module Outline(MO).</p>
     </section>
 
     <p id="navigationError" class="error" role="alert"></p>
