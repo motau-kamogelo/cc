@@ -20,7 +20,7 @@
 <main class="container">
   <header class="hero">
     <div>
-      <p class="eyebrow">Independent student support tool v1.2</p>
+      <p class="eyebrow">Independent student support tool v1.3</p>
       <h1>CASS Calculator</h1>
       <p>Calculate your current weighted mark and find the Summative mark you need to reach your desired final result.</p>
     </div>
@@ -42,14 +42,14 @@
 
     <section class="card step-panel" data-step="1" hidden>
       <h2>2. Set formatives weighting</h2>
-      <p class="help">ICE Tasks are worth up to 10% and the Summative is worth 35%. Set the weightings for Formative 1 and Formative 2. Together, the two formative weightings must equal 55%.</p>
+      <p class="help">ICE Tasks are worth up to 10% and the Summative is worth 35%. Set the weightings for Formative 1 and Formative 2 - check Module Outline(MO). Together, the two formative weightings must equal 55%.</p>
       <div class="grid">
         <div><label for="f1Weight">Formative 1 weighting (%)</label><input id="f1Weight" type="number" min="0" max="55" step="0.5" placeholder="e.g. 25"></div>
         <div><label for="f2Weight">Formative 2 weighting (%)</label><input id="f2Weight" type="number" min="0" max="55" step="0.5" placeholder="e.g. 30"></div>
       </div>
-      <div class="weighting-total" id="weightingTotal" aria-live="polite">Formative weighting total: 55% / 55%</div>
+      <div class="weighting-total" id="weightingTotal" aria-live="polite">Formative weighting total: - / 55%</div>
       <p id="weightingError" class="error" role="alert"></p>
-      <p class="help small-note">Example: Formative 1 = 25%, Formative 2 = 30%. You can change these to match your module's official assessment structure.</p>
+      <p class="help small-note">Example: Formative 1 = 25%, Formative 2 = 30%. Check Module Outline(MO) for assessment structure.</p>
     </section>
 
     <section class="card step-panel" data-step="2" hidden>
@@ -76,14 +76,14 @@
     <section class="card step-panel results-panel" data-step="4" hidden>
       <h2>5. Your CASS results</h2>
       <div class="result-block">
-        <h3>Current module mark</h3>
+        <h3>Current module mark (/100)</h3>
         <p class="help">Your weighted mark earned before the Summative assessment.</p>
         <div id="current" class="big-number">0.00%</div>
         <div class="breakdown">
-          <div><span>ICE Tasks contribution</span><strong id="iceContribution">0.00%</strong><span>/10%</span></div>
-          <div><span>Formative 1 contribution</span><strong id="f1Contribution">0.00%</strong><span>/</span><span id="summaryF1">25%</span></div>
-          <div><span>Formative 2 contribution</span><strong id="f2Contribution">0.00%</strong><span>/</span><span id="summaryF2">25%</span></div>
-          <div><span>Maximum possible final mark</span><strong id="maximum">0.00%</strong><span>/100%</span></div>
+          <div><span>ICE Tasks contribution</span><strong id="iceContribution">0.00%</strong></div>
+          <div><span>Formative 1 contribution</span><strong id="f1Contribution">0.00%</strong></div>
+          <div><span>Formative 2 contribution</span><strong id="f2Contribution">0.00%</strong></div>
+          <div><span>Maximum possible final mark</span><strong id="maximum">0.00%</strong></div>
         </div>
       </div>
       <div class="result-block target-result">
@@ -91,7 +91,7 @@
         <div id="required" class="big-number">—</div>
         <p id="message" class="help" aria-live="polite">Your required Summative mark will appear here.</p>
       </div>
-      <p class="disclaimer">This calculator is a planning tool. Always confirm your module's official assessment weightings with your lecturer.</p>
+      <p class="disclaimer">This calculator is a planning tool. Always confirm your module's official assessment weightings with your lecturer or check the Module Outline(MO).</p>
     </section>
 
     <p id="navigationError" class="error" role="alert"></p>
