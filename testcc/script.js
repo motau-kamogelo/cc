@@ -110,7 +110,7 @@ function calculateResults() {
       message.textContent = `You need at least ${needed.toFixed(2)}% in the Summative assessment to achieve ${desired.toFixed(2)}% overall.`;
     } else {
       result.textContent = ">100%";
-      message.textContent = "This target cannot be achieved with your current marks, even with 100% in the Summative assessment.";
+      message.textContent = "This target cannot be achieved with your current marks, even with 100% in the Summative assessment. Go 1 step back and choose a lower target.";
     }
   }
 }
